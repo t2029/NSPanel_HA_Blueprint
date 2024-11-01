@@ -7787,7 +7787,7 @@ action:
         {% if weather_entity_tmp is string and weather_entity_tmp | length > 0 %} {{ weather_entity_tmp }}
         {% elif states.weather | list | count > 0 %} {{ states.weather | map(attribute="entity_id") | list | first }}
         {% endif %}
-      temperature_units: "°"
+      temperature_units: "{{ state_attr(weather_entity, 'temperature_unit') }}"
 
       ##### Climate page #####
       page_climate:
